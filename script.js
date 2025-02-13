@@ -1,16 +1,15 @@
 const myLibrary = []
 
-function Book(title, author, pages, read) {
-
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
-
-    this.toggleRead = function () {
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.read = read
+    }
+    toggleRead() {
         this.read = !this.read
     }
-
 
 }
 
@@ -61,7 +60,7 @@ form.addEventListener("submit", (event) => {
     renderLibrary()
 })
 
-function renderLibrary(){
+function renderLibrary() {
     bookContainer.innerHTML = ""
 
     myLibrary.forEach((book, index) => {
@@ -90,6 +89,7 @@ function removeBook(index) {
 }
 
 function toggleRead(index) {
+    console.log(myLibrary[index])
     myLibrary[index].toggleRead()
     renderLibrary()
 }
