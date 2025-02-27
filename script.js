@@ -18,6 +18,7 @@ const addBookModal = document.getElementById("addBookModal")
 const form = document.getElementById("addBookForm")
 const closeModal = document.querySelector(".close")
 const bookContainer = document.getElementById("library")
+const errorMessage = document.getElementById("error-message");
 
 addBookbtn.addEventListener("click", () => {
     addBookModal.style.display = "flex"
@@ -49,9 +50,12 @@ form.addEventListener("submit", (event) => {
     console.log(`Title: ${title}, Author: ${author}, Pages: ${pages}, Read: ${read}`);
 
     if (title === "" || author === "" || pages <= 0) {
-        alert("Please enter valid book details.");
+   
+        errorMessage.innerText = "Please Enter valid Book Details!"
+        // alert("Please enter valid book details.");
         return;
     }
+    
 
     const book = new Book(title, author, pages, read)
     addBookToLibrary(book)
